@@ -3,6 +3,7 @@ const menuToggle = document.getElementById("menu-toggle");
 const nav = document.getElementById("nav");
 const navLinks = document.querySelectorAll(".nav a");
 const contactForm = document.querySelector(".contact-form");
+const readMoreToggles = document.querySelectorAll(".read-more-toggle");
 const revealTargets = document.querySelectorAll(
   ".section-heading, .hero-text > *, .hero-image, .highlight-card, .about-card, .skill-group, .project-card, .experience-card, .blog-card, .contact-card, .contact-form, .footer-content"
 );
@@ -85,6 +86,29 @@ revealTargets.forEach((element) => {
 });
 
 updateOnScroll();
+
+readMoreToggles.forEach((toggle) => {
+  toggle.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    const blogCard = toggle.closest(".blog-card");
+    const blogMore = blogCard?.querySelector(".blog-more");
+
+    if (!blogCard || !blogMore) {
+      return;
+    }
+
+    const isExpanded = blogCard.classList.toggle("expanded");
+
+    if (isExpanded) {
+      blogMore.style.maxHeight = `${blogMore.scrollHeight}px`;
+      toggle.textContent = "Show Less";
+    } else {
+      blogMore.style.maxHeight = "0px";
+      toggle.textContent = "Read More";
+    }
+  });
+});
 
 if (contactForm) {
   contactForm.addEventListener("submit", (event) => {

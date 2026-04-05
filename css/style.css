@@ -97,11 +97,11 @@ ul {
 }
 
 .section {
-  padding: 110px 0;
+  padding: 88px 0;
 }
 
 .section-heading {
-  margin-bottom: 48px;
+  margin-bottom: 40px;
   max-width: 620px;
 }
 
@@ -720,6 +720,36 @@ ul {
 
 .blog-card p {
   margin-bottom: 18px;
+}
+
+.blog-preview {
+  margin-bottom: 12px;
+}
+
+.blog-more {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.3s ease;
+}
+
+.blog-card.expanded .blog-more {
+  opacity: 1;
+}
+
+.blog-card.expanded .blog-more p {
+  margin-bottom: 16px;
+}
+
+.read-more-toggle {
+  font-family: var(--font-body);
+  color: var(--heading);
+  font-weight: 700;
+  transition: color var(--transition);
+}
+
+.read-more-toggle:hover {
+  color: var(--accent-strong);
 }
 
 .contact-form {
